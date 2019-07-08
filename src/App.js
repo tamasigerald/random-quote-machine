@@ -1,24 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './index.css';
 
 function App() {
   return (
-    <div className="app">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App">
+      <h1>Random Quote Machine</h1>
+      <div id="quote-box">
+        <h2>Press the button below to generate a random quote.</h2>
+        <p id="text">"Quote"</p>
+        <p id="author"></p>
+
+        <button id="new-quote">New quote</button>
+        <a id="tweet-quote" href="twitter.com/intent/tweet">Tweet</a>
+
+      </div>
     </div>
   );
 }
