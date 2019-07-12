@@ -2,53 +2,56 @@ import React from 'react';
 import './index.css';
 
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       quotes: [],
+      dataRoute: 'https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1'
     }
   }
   
   componentDidMount() {
-    let quotesUrl = '${getQuotes}';
-    fetch(quotesUrl)
+    fetch(this.state.dataRoute)
     .then(resp => resp.json())
-    .then(data => {
-      console.log(data);
-      this.setState({ quotes: data.records});
+    .then(quotes => {
+      console.log(quotes);
+      this.setState({ quotes: quotes.map(this.mapPost)});
     }).catch(err => {
       // Error
     });
+    
   }
 
-
+  mapPost(quote){
+    return {
+      ID: quote.ID,
+      content: quote.content,
+      title: quote.title
+    }
+  }
   
 
   render() {
     return (
       <div className="App">
         <h1>Random Quote Machine</h1>
-        <div>
-          
+        {this.state.quotes.map((quote, id) => (
+          <div id="quote-box">
+          <h2>Press the button below to generate a random quote.</h2>
+          <p id="text">{quote.content}</p>
+          <p id="author">{quote.title}</p>
+          <p id="author">{quote.ID}</p>
+
+         
+          <button id="new-quote">New quote</button><br/>
+          <a id="tweet-quote" href="twitter.com/intent/tweet">Tweet</a>
         </div>
+        ))}
+          
       </div>
     );}
 }
-
-const appUrl = 'https://quotehttp://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1s.p.rapidapi.com/';
-
-const getQuotes = '${appUrl}quotes';
-
-const CardQuote = ({ quote, index}) => (
-  <div id="quote-box" key={index}>
-    <h2>Press the button below to generate a random quote.</h2>
-    <p id="text">{quote}</p>
-    <p id="author"></p>
-
-    <button id="new-quote">New quote</button><br/>
-    <a id="tweet-quote" href="twitter.com/intent/tweet">Tweet</a>
-  </div>
-)
 
 export default App;
