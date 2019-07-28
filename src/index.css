@@ -1,31 +1,91 @@
-body {
+html, body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color: #c2fcff;
+  background: linear-gradient(315deg, rgba(192,222,237,1) 35%, rgba(29,202,255,1) 100%);
+  background-repeat: no-repeat;
+  height: calc(100vh - 22px);
+}
+
+h1 {
+  padding-top: 25%;
+  text-shadow: 0.5px 0.5px #0084b4;
 }
 
 #quote-box {
-  padding-top: 20px;
-  padding-bottom: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate( -50% , -50% );
+  padding: 40px 20px 20px 20px;
   width: 60%;
-  margin: 0 auto;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(29, 202, 255, 0.7);
 }
 
 #new-quote {
-  margin: 0 auto;
+  position: relative;
+  width: 8em;
   border: 0;
+  margin-top: 10px;
   padding: 7px 10px;
   border-radius: 5px;
+  font-weight: 800;
+  color: #0084b4;
+}
+
+.fa-quote-left {
+  position: fixed;
+  top: 15%;
+  left: 20%;
+  transform: rotate(-38deg);
+  color: rgba(192,222,237,1);
+  opacity: 0.2;
+}
+
+.fa-twitter {
+  padding-top: 0.4em;
+  color: #0084b4;
+  float: right;
+}
+
+#text { 
+  position: relative;
+  top: 50%;
+  transform: translate( 0 , -50% );
+
+  font-size: 1.3em;
+  font-weight: 500;
+  width: 90%;
+  margin: 0 auto;
+  line-height: 1.5em;
+}
+
+#text-container {
+  height: 8em;
+}
+
+#author {
+  font-weight: 800;
+  font-size: 1.4em;
 }
 
 @media only screen and (max-width: 650px) {
+  html, body {
+    height: calc(100vh - 4em - 0.5em - 6px)
+  }
+
   #quote-box {
     width: 80%;
+  }
+
+  #text-container {
+    height: 16em;
+  }
+
+  .fa-quote-left {
+    top: 18%;
+    left: 20%;
   }
 } 
